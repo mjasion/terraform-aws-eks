@@ -39,6 +39,8 @@ locals {
     target_group_arns             = ""                              # A comma delimited list of ALB target group ARNs to be associated to the ASG
     enabled_metrics               = ""                              # A comma delimited list of metrics to be collected i.e. GroupMinSize,GroupMaxSize,GroupDesiredCapacity
     placement_group               = ""                              # The name of the placement group into which to launch the instances, if any.
+    health_check_grace_period     = 300                             # Time (in seconds) after instance comes into service before checking health.
+    default_cooldown              = 300                             # Time (in seconds) after a scaling activity completes before another scaling activity can start.
   }
 
   workers_group_defaults = "${merge(local.workers_group_defaults_defaults, var.workers_group_defaults)}"
